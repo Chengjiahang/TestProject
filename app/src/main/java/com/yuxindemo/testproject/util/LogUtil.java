@@ -5,4 +5,7 @@ package com.yuxindemo.testproject.util;
  */
 
 public class LogUtil {
+
+
+
 }
