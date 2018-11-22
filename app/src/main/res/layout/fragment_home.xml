@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.yuxindemo.testproject.widget.XListView
+        android:id="@+id/fragment_home_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:padding="@dimen/dimen_value_dp30"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/jump_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MainActivity"/>
+
+        <Button
+            android:id="@+id/jump_single"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SingleActivity"/>
+
+    </LinearLayout>
+    
+</RelativeLayout>

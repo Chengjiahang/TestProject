@@ -8,6 +8,7 @@ package com.yuxindemo.testproject.ui.activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yuxindemo.testproject.R;
+import com.yuxindemo.testproject.util.LogUtil;
 import com.yuxindemo.testproject.util.LruJsonCache;
 
 import butterknife.ButterKnife;
@@ -32,7 +34,7 @@ import butterknife.ButterKnife;
  * 基类Activity
  */
 
-public abstract  class BaseActivity extends AppCompatActivity implements View.OnClickListener  {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener  {
 
     /**
      * 是否沉浸状态栏
@@ -86,6 +88,16 @@ public abstract  class BaseActivity extends AppCompatActivity implements View.On
         initView();
 
         getData(this);
+
+        getActivityName();  // 获取Activity包名
+
+    }
+
+    /**
+     * [获得Activity类名]
+     */
+    protected void getActivityName(){
+        LogUtil.e("ActivityName","  OnCreate -- "+ getClass().getSimpleName());
     }
 
     /**
@@ -113,7 +125,7 @@ public abstract  class BaseActivity extends AppCompatActivity implements View.On
      **/
     public void initHead() {
         //标题栏
-        headView = findViewById(R.id.base_header);
+        headView = (RelativeLayout) findViewById(R.id.base_header);
         tv_title = (TextView) findViewById(R.id.tv_title);
         img_left_btn = (ImageView) findViewById(R.id.img_left_btn);
         img_left_btn.setOnClickListener(new View.OnClickListener() {
@@ -202,6 +214,11 @@ public abstract  class BaseActivity extends AppCompatActivity implements View.On
         super.onDestroy();
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+    }
+
     /**
      * [沉浸状态栏]
      */
@@ -243,8 +260,6 @@ public abstract  class BaseActivity extends AppCompatActivity implements View.On
     public void setSteepStatusBar(boolean isSetStatusBar) {
         this.isSetStatusBar = isSetStatusBar;
     }
-
-
 
     public void showLoadingDialog(final String msg) {
 //        if (!isActivityRunning) {

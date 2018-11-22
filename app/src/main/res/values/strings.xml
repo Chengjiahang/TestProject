@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">TestProject</string>
+
+    <!--ActivityTitle-->
+    <string name="login_activity_title">登录</string>
+
+    <!--MainActivity Navigation-->
+    <string name="main_navigation_first">首页</string>
+    <string name="main_navigation_two">贷款</string>
+    <string name="main_navigation_three">新闻</string>
+    <string name="main_navigation_four">我的</string>
+
+
+    <!--XListView-->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">释放更新</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">最近一次</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">释放加载</string>
+    <string name="xlistview_header_bottom">没有更多数据了</string>
+
+    <!--个人-->
+    <string name="main_personal_login_register">登录/注册</string>
+    <string name="main_personal_login">登录</string>
+    <string name="main_personal_phone">手机号</string>
+    <string name="main_personal_code">验证码</string>
+
 </resources>

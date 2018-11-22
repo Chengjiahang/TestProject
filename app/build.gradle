@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.yuxindemo.testproject"
         minSdkVersion 24
@@ -18,17 +19,53 @@ android {
     }
 }
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestCompile('com.android.support:support-annotations:26.1.0') {
+        force = true
+    }
+    //   RecyclerView
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    //  BottomNavigationView 底部导航栏
+    //implementation 'com.android.support:design:26.0.1'
+    implementation 'com.android.support:design:24.0.1'
 
+    // XListView  第三方加载动画
+    //    implementation 'com.github.ybq:Android-SpinKit:1.1.0'
+    implementation 'com.github.ybq:Android-SpinKit:1.1.0'
     // 找Id框架
-    compile 'com.jakewharton:butterknife:8.4.0'
-
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     // 注入框架
-    compile"com.google.dagger:dagger:2.14.1"
+    compile 'com.google.dagger:dagger:2.14.1'
+
+    // rx retrofit gson
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'io.reactivex:rxandroid:1.2.0'
+    compile 'com.google.code.gson:gson:2.6.2'
+
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '25.3.0'
+            }
+        }
+    }
 }
